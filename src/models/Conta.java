@@ -4,16 +4,15 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Conta {
-  int numeroConta;
+  private int numeroConta;
   String titular;
   String cpf;
-  double saldo;
+  private double saldo;
   String tipoConta;
   LocalDate dataAbertura;
-  boolean ativa;
+  private boolean ativa;
 
-  public Conta(
-      int numeroConta,
+  public Conta(int numeroConta,
       String titular,
       String cpf,
       String tipoConta) {
@@ -24,6 +23,15 @@ public class Conta {
     this.tipoConta = tipoConta;
     this.dataAbertura = LocalDate.now();
     this.ativa = true;
+  }
+  public int getNumeroConta() {
+    return this.numeroConta;
+  }
+  public double getSaldo() {
+    return this.saldo;
+  }
+  public void setAtiva(boolean estado) {
+    this.ativa = estado;
   }
 
   public void depositar(double valor) {
@@ -50,6 +58,10 @@ public class Conta {
       return true;
     }
   }
+
+   public boolean estaAtiva() {
+      return this.ativa;
+    }
 
   @Override
   public String toString() {
