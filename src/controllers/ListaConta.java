@@ -56,6 +56,7 @@ public class ListaConta {
     }
     return null;
   }
+
   public boolean encerrarConta(int numero) {
     Conta contaParaEncerrar = buscarConta(numero);
 
@@ -74,25 +75,25 @@ public class ListaConta {
     }
   }
    public void removerConta(int numeroConta) {
-    No atual = inicio;
-    No anterior = null; 
+    NoConta atual = cabeca;
+    NoConta anterior = null; 
 
-    while (atual != null && atual.getInfo().getNumero() != numeroConta) {
+    while (atual != null && atual.conta.getNumeroConta() != numeroConta) {
         anterior = atual;
-        atual = atual.getProx();
+        atual = atual.proximo;
     }
     if (atual == null) {
         System.out.println("Conta não encontrada.");
         return;
     }
-    if (atual.getInfo().getSaldo() != 0) {
+    if (atual.conta.getSaldo() != 0) {
         System.out.println("A remoção só é permitida para contas com saldo zero.");
         return;
     }
     if (anterior == null) { 
-        inicio = atual.getProx();
+        cabeca = atual.proximo;
     } else { 
-        anterior.setProx(atual.getProx());
+        anterior.proximo = atual.proximo;
     }
 
     System.out.println("Conta " + numeroConta + " removida com sucesso!");

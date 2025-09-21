@@ -37,11 +37,15 @@ public class App {
                     System.out.print("Digite o nome do titular: ");
                     String titular = scanner.nextLine();
     
-                    System.out.print("Digite o saldo inicial: R$ ");
-                    double saldo = scanner.nextDouble();
-                    Conta novaConta = new Conta(numero, titular, saldo);
+                    System.out.print("Digite o cpf do titular: ");
+                    String cpf = scanner.nextLine();
     
-                    lista.inserir(novaConta);
+                    System.out.print("Digite o tipo da conta (corrente ou poupança)");
+                    String tipoDeConta = scanner.nextLine();
+
+                    Conta novaConta = new Conta(numero, titular, cpf, tipoDeConta);
+    
+                    listaDeContas.inserirNovaConta(novaConta);
     
                     System.out.println("Conta criada com sucesso!");
                     break;
@@ -68,7 +72,7 @@ public class App {
                     System.out.print("Digite o número da conta que deseja remover: ");
                     int numRemConta = scanner.nextInt();
                     
-                    lista.removerConta(numRemConta);
+                    listaDeContas.removerConta(numRemConta);
                     break;
                 case 5:
                     System.out.print("Digite o número da conta: ");
