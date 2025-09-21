@@ -29,7 +29,21 @@ public class App {
             }
             switch (opcao) {
                 case 1:
-                    // Lógica para cadastrar conta
+                    System.out.println("Crie uma nova conta");
+                    System.out.print("Digite o número da conta:");
+                    int numero = scanner.nextInt();
+                    scanner.nextLine(); 
+    
+                    System.out.print("Digite o nome do titular: ");
+                    String titular = scanner.nextLine();
+    
+                    System.out.print("Digite o saldo inicial: R$ ");
+                    double saldo = scanner.nextDouble();
+                    Conta novaConta = new Conta(numero, titular, saldo);
+    
+                    lista.inserir(novaConta);
+    
+                    System.out.println("Conta criada com sucesso!");
                     break;
                 case 2:
                     listaDeContas.listar();
@@ -49,7 +63,12 @@ public class App {
                     }
                     break;
                 case 4:
-                    // Lógica para remover conta
+                    System.out.println("Remover uma conta");
+    
+                    System.out.print("Digite o número da conta que deseja remover: ");
+                    int numRemConta = scanner.nextInt();
+                    
+                    lista.removerConta(numRemConta);
                     break;
                 case 5:
                     System.out.print("Digite o número da conta: ");

@@ -73,5 +73,29 @@ public class ListaConta {
       return false;
     }
   }
+   public void removerConta(int numeroConta) {
+    No atual = inicio;
+    No anterior = null; 
+
+    while (atual != null && atual.getInfo().getNumero() != numeroConta) {
+        anterior = atual;
+        atual = atual.getProx();
+    }
+    if (atual == null) {
+        System.out.println("Conta não encontrada.");
+        return;
+    }
+    if (atual.getInfo().getSaldo() != 0) {
+        System.out.println("A remoção só é permitida para contas com saldo zero.");
+        return;
+    }
+    if (anterior == null) { 
+        inicio = atual.getProx();
+    } else { 
+        anterior.setProx(atual.getProx());
+    }
+
+    System.out.println("Conta " + numeroConta + " removida com sucesso!");
+}
 
 }
